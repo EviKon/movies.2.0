@@ -1,0 +1,17 @@
+<div class="button">
+  <%= link_to 'All movies', root_path %>
+  <%= link_to 'New Category', new_category_path %>
+</div>
+
+<% @categories.each do |ctg| %>
+  <p>
+    <%= link_to ctg.name, category_path(ctg) %>
+  </p>
+  <div>
+    <%= ctg.movies.count %>
+  </div>
+  <div class="button">
+    <%= link_to 'Edit Category', edit_category_path(ctg) %>
+    <%= link_to 'Delete Category', category_path(ctg), method: :delete %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<%= link_to 'All movies', root_path %>
+<p>
+  <%= @movie.name %><%=  %>
+  <br>
+  <%= @movie.description %>
+</p>
+<p>
+  <% if @movie.categories.any? %>
+    <%= render @movie.categories %>
+  <% end %>
+</p>
+<div>
+  <% if @movie.ratings.any? %>
+    <%= @movie.overall_score %>
+  <% end %>
+  <%= form_for([@movie, @rating], remote: true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <div class="form-group">
+      <div class="control-label col-md-2">
+        <%= f.label :score, "Rating" %>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :score, class:"form-control", placeholder: "Enter your rating" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <%= f.submit "Save", class: "btn btn-primary btn-lg btn-xlarge" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="button">
+  <%= link_to 'Edit Movie', edit_movie_path(@movie) %>
+  <%= link_to 'Delete Movie', movie_path(@movie), method: :delete %>
+</div>

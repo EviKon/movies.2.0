@@ -1,0 +1,13 @@
+<%= link_to 'All Categories', categories_path %>
+<p>
+  <%= @category.name %>
+</p>
+<div>
+  <% if @category.movies.any? %>
+    <%= render @category.movies %>
+  <% end %>
+</div>
+<div class="button">
+  <%= link_to 'Edit Category', edit_category_path(@category) %>
+  <%= link_to 'Delete Category', category_path(@category), method: :delete %>
+</div>

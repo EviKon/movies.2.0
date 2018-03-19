@@ -1,0 +1,26 @@
+<div class="button">
+  <%= link_to 'New Movie', new_movie_path %>
+  <%= link_to 'New Category', new_category_path %>
+</div>
+
+<% @movies.each do |movie| %>
+  <p>
+    <%= link_to movie.name, movie_path(movie) %>
+    <br>
+    <%= movie.description %>
+    <div>
+      <% if movie.categories.any? %>
+        <%= render movie.categories %>
+      <% end %>
+    </div>
+    <div>
+      <% if movie.ratings.any? %>
+        <%= movie.overall_score %>
+      <% end %>
+    </div>
+  </p>
+  <div class="button">
+    <%= link_to 'Edit Movie', edit_movie_path(movie) %>
+    <%= link_to 'Delete Movie', movie_path(movie), method: :delete %>
+  </div>
+<% end %>
