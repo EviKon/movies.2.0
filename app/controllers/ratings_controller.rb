@@ -4,7 +4,7 @@ class RatingsController < ApplicationController
     @rating = @movie.ratings.build(rating_params)
     if @rating.save
       flash[:success] = 'Rating was created'
-      redirect_to :back
+      redirect_back fallback_location: movie_path(@movie)
     else
       flash[:danger] = 'Rating not successful'
       redirect_to :back

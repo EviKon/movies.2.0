@@ -7,6 +7,9 @@ class Movie < ApplicationRecord
   has_many :ratings, dependent: :destroy
 
   def overall_score
-    ratings.sum(:score)/ratings.size.to_f
+    ratings.sum { |rating|
+      rating.score
+    } / ratings.size.to_f
+    # ratings.sum(&:score)/ratings.size.to_f
   end
 end
