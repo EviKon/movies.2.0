@@ -41,15 +41,6 @@ class MoviesController < ApplicationController
     redirect_to root_path
   end
 
-  def overall_score(movie_id)
-    @ratings.each do |score, movie|
-      if movie == movie_id
-        overall_score += score
-      end
-    end
-    overall_score
-  end
-
   private
 
   def movie_params

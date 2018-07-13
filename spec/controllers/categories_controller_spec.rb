@@ -35,6 +35,14 @@ RSpec.describe CategoriesController do
 
       expect(response).to redirect_to(category_path(category))
     end
+
+    context 'when it is not saved' do
+      it 'redirects to new' do
+        post :create, params: { category: { name: nil } }
+
+        expect(response).to render_template 'new'
+      end
+    end
   end
 
   describe '#edit' do
@@ -54,6 +62,14 @@ RSpec.describe CategoriesController do
       patch :update, params: { id: category.id, category: { name: 'Romance' } }
 
       expect(response).to redirect_to(category_path(category))
+    end
+
+    context 'when it is not saved' do
+      it 'redirects to new' do
+        put :update, params: { id: category.id, category: { name: '' } }
+
+        expect(response).to render_template :edit
+      end
     end
   end
 

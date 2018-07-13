@@ -41,10 +41,12 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'geckodriver-helper'
   gem 'rspec-rails', '~> 3.7'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
+  gem 'factory_bot_rails'
   #gem 'simplecov-console'
 end
 

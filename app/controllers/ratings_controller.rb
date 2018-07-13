@@ -7,7 +7,7 @@ class RatingsController < ApplicationController
       redirect_back fallback_location: movie_path(@movie)
     else
       flash[:danger] = 'Rating not successful'
-      redirect_to :back
+      redirect_to movie_path(@movie)
     end
   end
 

@@ -1,8 +1,18 @@
 <%= form_for @movie, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_area :description, size: "60x12" %>
-  <%=f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb|%>
-    <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
-  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %>
+  </p>
+  <p>
+    <%= f.text_area :description, size: "60x12" %>
+  </p>
+  <p>
+    <%=f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb|%>
+      <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+    <% end %>
+  </p>
   <%= f.submit "Create" %>
 <% end %>

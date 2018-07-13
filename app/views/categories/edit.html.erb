@@ -1,4 +1,5 @@
 <%= form_for @category, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.submit "Submit" %>
 <% end %>
